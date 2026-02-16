@@ -4,9 +4,12 @@
 
 import sentencepiece as spm
 
+from IRIS.config import settings
+
 class IrisAnalytics:
-    def __init__(self, tokenizer_path="models/ecommerce_tokenizer.model"):
-        self.sp = spm.SentencePieceProcessor(model_file=tokenizer_path)
+    def __init__(self, tokenizer_path=None):
+        t_path = tokenizer_path or settings.TOKENIZER_PATH
+        self.sp = spm.SentencePieceProcessor(model_file=t_path)
 
     def analyze_stock_velocity(self, sales_data, stock_count):
         print("IRIS: Analyse de la vitesse de vente...")
