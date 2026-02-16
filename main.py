@@ -2,7 +2,12 @@
 # Licensed under the Apache License, Version 2.0
 # http://www.apache.org/licenses/LICENSE-2.0
 
+import sentencepiece as spm
+
 class IrisAnalytics:
+    def __init__(self, tokenizer_path="models/ecommerce_tokenizer.model"):
+        self.sp = spm.SentencePieceProcessor(model_file=tokenizer_path)
+
     def analyze_stock_velocity(self, sales_data, stock_count):
         print("IRIS: Analyse de la vitesse de vente...")
         if stock_count < 10:
