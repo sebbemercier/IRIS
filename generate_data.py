@@ -18,8 +18,7 @@ def generate_iris_data():
     
     with open("IRIS/data/train_analytics.jsonl", "w") as f:
         for entry in data:
-            f.write(json.dumps(entry) + "
-")
+            f.write(json.dumps(entry) + "\n")
     print("IRIS: Dataset analytique généré.")
 
 if __name__ == "__main__":
