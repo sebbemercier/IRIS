@@ -5,7 +5,12 @@ from datasets import load_dataset
 import os
 
 def train_iris(model_id="TinyLlama/TinyLlama-1.1B-Chat-v1.0"):
-    device = "mps" if torch.backends.mps.is_available() else "cpu"
+    if torch.cuda.is_available():
+        device = "cuda"
+    elif torch.backends.mps.is_available():
+        device = "mps"
+    else:
+        device = "cpu"
     print(f"🚀 Device : {device.upper()}")
 
     tokenizer = AutoTokenizer.from_pretrained(model_id)
@@ -29,7 +34,6 @@ def train_iris(model_id="TinyLlama/TinyLlama-1.1B-Chat-v1.0"):
         output_dir="./iris-output",
         per_device_train_batch_size=4,
         num_train_epochs=3,
-        use_mps_device=True,
         logging_steps=5,
         save_strategy="no",
         report_to="none"

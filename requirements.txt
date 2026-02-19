@@ -1,0 +1,8 @@
+transformers
+torch
+datasets
+sentencepiece
+pydantic-settings
+accelerate
+protobuf
+python-dotenv
